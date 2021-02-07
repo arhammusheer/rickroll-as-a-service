@@ -1,6 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const csrf = require("csurf");
+const Roll = require("../models/Roll")
 
 const csrfProtection = csrf({ cookie: true });
 
@@ -17,6 +18,9 @@ router.get("/", (req, res, next) => {
       link: "#",
     },
   });
+});
+
+router.get("/roll", (req, res, next) => {
 });
 
 module.exports = router;
