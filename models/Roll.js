@@ -1,6 +1,8 @@
-var mongoose = require("mongoose");
+const mongoose = require("mongoose");
+const nanoid = require("nanoid");
 
-var RollSchema = new mongoose.Schema({
+const RollSchema = new mongoose.Schema({
+  _id: {},
   site_name: { type: String, required: true },
   title: { type: String, required: true },
   description: { type: String, required: true },
@@ -8,5 +10,5 @@ var RollSchema = new mongoose.Schema({
   timer: { type: Number, required: true },
 });
 
-global.RollSchema = global.RollSchema || mongoose.model("Roll", RollSchema);
+global.RollSchema = mongoose.model("Roll", RollSchema);
 module.exports = global.RollSchema;

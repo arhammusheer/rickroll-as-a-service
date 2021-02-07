@@ -1,9 +1,10 @@
-<div class="container mt-4">
-    <div class="row">
+<div class="container">
+    <div class="row vh-100 align-items-center">
         <div class="col-md-8">
             <h1>Hi there,</h1>
             <span class="h1">Welcome to </span><span class="display-3 font-weight-bold">Rickroller</span>
             <p>Make your own rickrolls with fake embeds just like this one.</p>
+            <a href="/roll" class="btn btn-lg btn-primary">Make your own RickRoll</a>
         </div>
         <div class="col-md-4">
             <div class="card shadow">
@@ -18,43 +19,32 @@
             </div>
         </div>
     </div>
+    <class class="row vh-100 align-items-center">
+        <div>
+            <h1>Your Embeds are gonna look like this</h1>
+            <div class="col-md-6">
 
-    <div class="row">
-        <div class="col-md-6">
-            <div class="card bg-dark text-white mt-4">
-                <div class="card-body">
-                    <div class="d-flex justify-content-between">
-                        <div class="d-flex flex-column">
-                            <small>{{embed.site_name}}</small>
-                            <a href="{{embed.link}}" class="mt-2">{{embed.title}}</a>
-                            <p class="mt-2">{{embed.description}}</p>
-                        </div>
+                <div class="card bg-dark text-white mt-4">
+                    <div class="card-body">
+                        <div class="d-flex justify-content-between">
+                            <div class="d-flex flex-column">
+                                <small>{{embed.site_name}}</small>
+                                <a href="{{embed.link}}" class="mt-2">{{embed.title}}</a>
+                                <p class="mt-2">{{embed.description}}</p>
+                            </div>
 
-                        <div>
-                            <img src="/images/croissant-1.jpg" alt="Croissant Image" class="rounded shadow"
-                                style="max-width: 100px; max-height: 100px;" />
+                            <div>
+                                <img src="{{embed.image_url}}" alt="Croissant Image" class="rounded shadow"
+                                    style="max-width: 100px; max-height: 100px;" />
 
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
+
+
+    </class>>
 </div>
-<div class="container mt-4">
-    <div class="card shadow">
-        <div class="card-body">
-            <h3>Make your own rickroll</h3>
-            <small>Make your own custom rickrolls with fake embeds</small>
-            <div class="row">
-                <div class="col-md-8">
-                    <form action="/newroll" method="post">
-                        
-                    </form>
-                </div>
-                <div class="col-md-4">hel </div>
-            </div>
-        </div>
-    </div>
 </div>
-<script defer src="/javascripts/form-listener.js"></script>
