@@ -62,3 +62,14 @@ sample_image_url.addEventListener("keyup", () => {
     }
   }, 500);
 });
+
+function encodeImageFileAsURL(element) {
+  var file = element.files[0];
+  var reader = new FileReader();
+  reader.onloadend = function() {
+    image_url.value =reader.result;
+    sample_image_url.src = reader.result;
+    console.log('RESULT', reader.result)
+  }
+  reader.readAsDataURL(file);
+}

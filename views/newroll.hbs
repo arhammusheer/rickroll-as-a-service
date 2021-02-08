@@ -1,79 +1,82 @@
 <div class="container my-4">
-    <div class="card shadow">
-        <div class="card-body">
-            <h3>Make your own rickroll</h3>
-            <small>Make your own custom rickrolls with fake embeds</small>
-            <div class="row mt-4">
-                <div class="col-md-7">
-                    <form action="/newroll" method="post" id="newroll">
-                        <input type="hidden" name="_csrf" value="{{csrfToken}}">
+	<div class="card shadow">
+		<div class="card-body">
+			<h3>Make your own rickroll</h3>
+			<small>Make your own custom rickrolls with fake embeds</small>
+			<div class="row mt-4">
+				<div class="col-md-7">
+					<form action="/newroll" method="post" id="newroll">
+						<input type="hidden" name="_csrf" value="{{csrfToken}}">
 
-                        <label for="site_name" id="site_name_label" class="form-label mt-3">Site Name*</label>
-                        <div class="input-group">
-                            <input type="text" class="form-control" name="site_name" id="site_name" required
-                                placeholder="Croissant world" />
-                            <button class="btn btn-primary" type="button"
-                                onclick="site_name.value=faker.commerce.department(); sample_site_name.innerHTML=site_name.value">random</button>
-                        </div>
-                        <label for="title" id="title_label" class="form-label mt-2">Title*</label>
-                        <div class="input-group">
-                            <input type="text" class="form-control" name="title" id="_title"
-                                placeholder="The amazing world of croissant" required />
-                            <button class="btn btn-primary" type="button"
-                                onclick="_title.value=faker.commerce.product(); sample_title.innerHTML=_title.value;">random</button>
-                        </div>
-                        <label for="description" id="description_label" class="form-label mt-2">Description*</label>
+						<label for="site_name" id="site_name_label" class="form-label mt-3">Site Name*</label>
+						<div class="input-group">
+							<input type="text" class="form-control" name="site_name" id="site_name" required
+								placeholder="Croissant world" />
+							<button class="btn btn-primary" type="button"
+								onclick="site_name.value=faker.commerce.department(); sample_site_name.innerHTML=site_name.value">random</button>
+						</div>
+						<label for="title" id="title_label" class="form-label mt-2">Title*</label>
+						<div class="input-group">
+							<input type="text" class="form-control" name="title" id="_title"
+								placeholder="The amazing world of croissant" required />
+							<button class="btn btn-primary" type="button"
+								onclick="_title.value=faker.commerce.product(); sample_title.innerHTML=_title.value;">random</button>
+						</div>
+						<label for="description" id="description_label" class="form-label mt-2">Description*</label>
 
-                        <div class="input-group">
-                            <input type="text" class="form-control" name="description" id="description" required
-                                placeholder="This webpage is about the amazing world of croissant and how it'll change you from a human to a croissant" />
-                            <button class="btn btn-primary" type="button"
-                                onclick="description.value=faker.lorem.sentence(); sample_description.innerHTML=description.value">random</button>
-                        </div>
+						<div class="input-group">
+							<input type="text" class="form-control" name="description" id="description" required
+								placeholder="This webpage is about the amazing world of croissant and how it'll change you from a human to a croissant" />
+							<button class="btn btn-primary" type="button"
+								onclick="description.value=faker.lorem.sentence(); sample_description.innerHTML=description.value">random</button>
+						</div>
 
-                        <label for="image_url" id="image_url_label" class="form-label mt-2">Image Url*</label>
+						<label for="image_url" id="image_url_label" class="form-label mt-2">Image Url*</label>
 
-                        <div class="input-group">
-                            <input type="url" class="form-control" name="image_url" id="image_url" required
-                                placeholder="/images/croissant-1.jpg" />
-                            <button class="btn btn-primary" type="button"
-                                onclick="image_url.value='https://source.unsplash.com/random'; sample_image_url.src=image_url.value+'?random_number='+Math.random()">random</button>
+						<div class="input-group">
+							<input type="url" class="form-control" name="image_url" id="image_url" required
+								placeholder="/images/croissant-1.jpg" />
+							<button class="btn btn-primary" type="button"
+								onclick="image_url.value='https://source.unsplash.com/random'; sample_image_url.src=image_url.value+'?random_number='+Math.random()">random</button>
+						</div>
+						<div class="mt-2">
+							Or<br>
+							<input type="file" onchange="encodeImageFileAsURL(this)" />
+						</div>
 
-                        </div>
-                        <div class="mt-2">
-                            <label for="timer" id="timer_label" class="form-label">Timer* (seconds)</label>
-                            <input type="number" class="form-control" name="timer" id="timer" required
-                                placeholder="1" />
-                        </div>
-                        <button type="submit" class="btn btn-primary mt-4">Submit</button>
+						<div class="mt-2">
+							<label for="timer" id="timer_label" class="form-label">Timer* (seconds)</label>
+							<input type="number" class="form-control" name="timer" id="timer" required placeholder="1" />
+						</div>
+						<button type="submit" class="btn btn-primary mt-4">Submit</button>
 
-                    </form>
-                </div>
-                <div class="col-md-5 mt-4">
-                    <h5>Your embed will look like this on discord</h5>
-                    <div class="card bg-dark text-white mt-4">
-                        <div class="card-body">
-                            <div class="d-flex justify-content-between">
-                                <div class="d-flex flex-column">
-                                    <small id="sample_site_name">{{embed.site_name}}</small>
-                                    <a href="{{embed.link}}" id="sample_title" class="mt-2">{{embed.title}}</a>
-                                    <p class="mt-2" id="sample_description">{{embed.description}}</p>
-                                </div>
+					</form>
+				</div>
+				<div class="col-md-5 mt-4">
+					<h5>Your embed will look like this on discord</h5>
+					<div class="card bg-dark text-white mt-4">
+						<div class="card-body">
+							<div class="d-flex justify-content-between">
+								<div class="d-flex flex-column">
+									<small id="sample_site_name">{{embed.site_name}}</small>
+									<a href="{{embed.link}}" id="sample_title" class="mt-2">{{embed.title}}</a>
+									<p class="mt-2" id="sample_description">{{embed.description}}</p>
+								</div>
 
-                                <div>
-                                    <img src="/images/croissant-1.jpg" alt="Croissant Image" class="rounded shadow"
-                                        id="sample_image_url" style="max-width: 100px; max-height: 100px;" />
+								<div>
+									<img src="/images/croissant-1.jpg" alt="Croissant Image" class="rounded shadow" id="sample_image_url"
+										style="max-width: 100px; max-height: 100px;" />
 
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
 </div>
 <script defer src="/javascripts/form-listener.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Faker/3.1.0/faker.min.js"
-    integrity="sha512-/seDHxVfh1NvFUscAj8GsHQVZJvr2jjAoYsNL7As2FCaFHUHYIarl3sRCvVlFgyouVNiRgHIebyLKjpgd1SLDw=="
-    crossorigin="anonymous"></script>
+	integrity="sha512-/seDHxVfh1NvFUscAj8GsHQVZJvr2jjAoYsNL7As2FCaFHUHYIarl3sRCvVlFgyouVNiRgHIebyLKjpgd1SLDw=="
+	crossorigin="anonymous"></script>
