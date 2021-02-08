@@ -13,7 +13,7 @@
             <tbody>
                 {{#each embeds}}
                 <tr>
-                    <th scope="row">{{@index}}</th>
+                    <th scope="row" class="__ranks">{{@index}}</th>
                     <td>{{this.counter}}</td>
                     <td class="mw-50">
                         <div class="card bg-dark text-white">
@@ -43,3 +43,12 @@
     </div>
 
 </div>
+
+<script type="text/javascript">
+    let ranks = document.getElementsByClassName("__ranks");
+    for (rank of ranks) {
+        console.log(rank)
+
+        rank.innerHTML = parseInt(rank.innerHTML) + 1;
+    }
+</script>

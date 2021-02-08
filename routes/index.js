@@ -53,7 +53,9 @@ router.get("/leaderboard", async (req, res, next) => {
       counter: -1,
     },
   });
-  res.render("leaderboard", { embeds: embedArray });
+  res.render("leaderboard", {
+    embeds: embedArray,
+  });
 });
 
 router.get("/:rollid", async (req, res, next) => {

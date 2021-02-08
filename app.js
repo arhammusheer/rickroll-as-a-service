@@ -5,10 +5,13 @@ const path = require("path");
 const cookieParser = require("cookie-parser");
 const logger = require("morgan");
 const mongoose = require("mongoose");
+const exphbs = require("express-handlebars");
 
 const indexRouter = require("./routes/index");
 
 const app = express();
+
+const hbs = exphbs.create({});
 
 mongoose.Promise = global.Promise;
 mongoose
@@ -27,6 +30,7 @@ mongoose
 
 // view engine setup
 app.set("views", path.join(__dirname, "views"));
+app.engine("handlebars", hbs.engine);
 app.set("view engine", "hbs");
 
 app.use(logger("dev"));
