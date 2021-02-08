@@ -1,0 +1,23 @@
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="{{embed.site_name}}" />
+<meta property="og:title" content="{{embed.title}}" />
+<meta property="og:description" content="{{embed.description}}" />
+<meta property="og:image" content="{{embed.image_url}}" />
+
+{{#if enabled}}
+<meta http-equiv="refresh"
+    content="{{embed.timer}};url=https://www.youtube.com/watch?v=dQw4w9WgXcQ&ab_channel=RickAstleyVEVO" />
+{{/if}}
+<div class="container">
+    <div class="row align-items-center justify-content-center vh-100">
+        <div class="col">
+            <h2>{{embed.site_name}}</h2>
+            <div class="display-2">{{embed.title}}</div>
+            <p>{{embed.description}}</p>
+            <img src="{{embed.image_url}}" class="rounded" style="width: 15rem" />
+        </div>
+        <div class="col-4">
+            <div class="text-warning">You're about to be rickrolled in {{embed.timer}} seconds</div>
+        </div>
+    </div>
+</div>

@@ -1,5 +1,5 @@
 const site_name = document.getElementById("site_name");
-const title = document.getElementById("title");
+const _title = document.getElementById("_title");
 const description = document.getElementById("description");
 const image_url = document.getElementById("image_url");
 
@@ -30,12 +30,12 @@ site_name.addEventListener("keyup", () => {
   }, 500);
 });
 
-title.addEventListener("keyup", () => {
+_title.addEventListener("keyup", () => {
   clearTimeout(timeout);
 
   timeout = setTimeout(function () {
-    sample_title.innerHTML = title.value;
-    if (title.value === "") {
+    sample_title.innerHTML = _title.value;
+    if (_title.value === "") {
       sample_title.innerHTML = defaultEmbed.title;
     }
   }, 500);
@@ -56,9 +56,9 @@ sample_image_url.addEventListener("keyup", () => {
   clearTimeout(timeout);
 
   timeout = setTimeout(function () {
-    sample_image_url.innerHTML = image_url.value;
+    sample_image_url.src = `${image_url.value}?t=${new Date().getTime()}`;
     if (image_url.value === "") {
-      sample_image_url = defaultEmbed.image_url;
+      sample_image_url.src = `${defaultEmbed.image_url}?t=${new Date().getTime()}`;
     }
   }, 500);
 });

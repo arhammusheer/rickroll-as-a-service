@@ -16,24 +16,34 @@ const defaultEmbed = {
 
 /* GET home page. */
 router.get("/", (req, res, next) => {
-  res.render("index", {
+  return res.render("index", {
     title: "Roller",
     embed: defaultEmbed,
   });
 });
 
 router.get("/roll", csrfProtection, (req, res, next) => {
-  res.render("newroll", {
+  return res.render("newroll", {
     title: "Roller",
     embed: defaultEmbed,
-    csrfToken: req.csrfToken()
+    csrfToken: req.csrfToken(),
   });
 });
 
-router.post("/newroll",csrfProtection, (req, res, next) => {
+router.post("/newroll", csrfProtection, (req, res, next) => {
   let roll = new Roll(req.body);
   roll.save();
-  res.redirect("/");
+  return res.redirect(`/disabled/${roll._id}`);
+});
+router.get("/disabled/:rollid", async (req, res, next) => {
+  let rollEmbed = await Roll.findById(req.params.rollid).exec();
+  console.log(req.baseUrl)
+  res.render("viewroll", { roll_link: `${req.protocol}://${req.hostname}:${process.env.PORT||"3000"}/${req.params.rollid}`, title: "Rolld", embed: rollEmbed, enabled: false });
+});
+
+router.get("/:rollid", async (req, res, next) => {
+  let rollEmbed = await Roll.findById(req.params.rollid).exec();
+  res.render("rolled", { title: "Rolld", embed: rollEmbed, enabled: true });
 });
 
 module.exports = router;
