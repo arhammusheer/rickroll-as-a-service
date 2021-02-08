@@ -1,0 +1,45 @@
+<div class="container mt-4">
+    <div class="display-4">Rickroll Leaderboard</div>
+    <div class="table-responsive">
+        <table class="table mt-4">
+            <thead>
+                <tr>
+                    <th scope="col">#Rank</th>
+                    <th scope="col">People rolled</th>
+                    <th scope="col">Embed</th>
+                    <th scope="col">RickRoll Link</th>
+                </tr>
+            </thead>
+            <tbody>
+                {{#each embeds}}
+                <tr>
+                    <th scope="row">{{@index}}</th>
+                    <td>{{this.counter}}</td>
+                    <td class="mw-50">
+                        <div class="card bg-dark text-white">
+                            <div class="card-body">
+                                <div class="d-flex justify-content-between">
+                                    <div class="d-flex flex-column">
+                                        <small>{{this.site_name}}</small>
+                                        <a href="{{this.link}}" class="mt-2">{{this.title}}</a>
+                                        <p class="mt-2">{{this.description}}</p>
+                                    </div>
+
+                                    <div>
+                                        <img src="{{this.image_url}}" alt="Croissant Image" class="rounded shadow"
+                                            style="max-width: 100px; max-height: 100px;" />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </td>
+                    <td>
+                        <a href="https://rolld.ml/{{this._id}}">https://rolld.ml/{{this._id}}</a>
+                    </td>
+                </tr>
+                {{/each}}
+            </tbody>
+        </table>
+    </div>
+
+</div>
