@@ -37,13 +37,35 @@ router.post("/newroll", csrfProtection, (req, res, next) => {
 });
 router.get("/disabled/:rollid", async (req, res, next) => {
   let rollEmbed = await Roll.findById(req.params.rollid).exec();
-  console.log(req.baseUrl)
-  res.render("viewroll", { roll_link: `https://rolld.ml/${req.params.rollid}`, title: "Rolld", embed: rollEmbed, enabled: false });
+  console.log(req.baseUrl);
+  res.render("viewroll", {
+    roll_link: `https://rolld.ml/${req.params.rollid}`,
+    title: "Rolld",
+    embed: rollEmbed,
+    enabled: false,
+  });
+});
+
+router.get("/leaderboard", async (req, res, next) => {
+  let embedArray = await Roll.find({ counter: { $gt: 0 } }, null, {
+    limit: 50,
+    sort: {
+      counter: -1,
+    },
+  });
+  res.render("leaderboard", { embeds: embedArray });
 });
 
 router.get("/:rollid", async (req, res, next) => {
   let rollEmbed = await Roll.findById(req.params.rollid).exec();
-  res.render("rolled", { title: "Rolld", embed: rollEmbed, enabled: true });
+  if (rollEmbed) {
+    rollEmbed.counter = rollEmbed.counter + 1;
+    await rollEmbed.save();
+    res.render("rolled", { title: "Rolld", embed: rollEmbed, enabled: true });
+  } else {
+    res.render("error", {
+      message: "Your rickroll was not found",
+    });
+  }
 });
-
 module.exports = router;

@@ -8,6 +8,7 @@ const RollSchema = new mongoose.Schema({
   description: { type: String, required: true },
   image_url: { type: String, required: true },
   timer: { type: Number, required: true },
+  counter: { type: Number, default: 0 },
 });
 
 global.RollSchema = mongoose.model("Roll", RollSchema);
