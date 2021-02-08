@@ -38,7 +38,7 @@ router.post("/newroll", csrfProtection, (req, res, next) => {
 router.get("/disabled/:rollid", async (req, res, next) => {
   let rollEmbed = await Roll.findById(req.params.rollid).exec();
   console.log(req.baseUrl)
-  res.render("viewroll", { roll_link: `${req.protocol}://${req.hostname}:${process.env.PORT||"3000"}/${req.params.rollid}`, title: "Rolld", embed: rollEmbed, enabled: false });
+  res.render("viewroll", { roll_link: `${req.protocol}://${req.hostname}/${req.params.rollid}`, title: "Rolld", embed: rollEmbed, enabled: false });
 });
 
 router.get("/:rollid", async (req, res, next) => {
