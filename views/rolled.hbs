@@ -17,7 +17,16 @@
             <img src="{{embed.image_url}}" class="rounded" style="width: 15rem" />
         </div>
         <div class="col-4">
-            <div class="text-warning">You're about to be rickrolled in {{embed.timer}} seconds</div>
+            <div class="text-warning">You're about to be rickrolled in <span id="countdown">{{embed.timer}}</span> seconds</div>
         </div>
     </div>
 </div>
+
+<script type="text/javascript">
+    let seconds = document.getElementById("countdown").textContent;
+    var countdown = setInterval(function(){
+    seconds--;
+    document.getElementById("countdown").textContent = seconds;
+    if (seconds <= 0) clearInterval(countdown);
+},1000);
+</script>
