@@ -1,8 +1,7 @@
 const mongoose = require("mongoose");
-const { nanoid } = require("nanoid");
+mongoose.plugin(require("mongoose-nanoid"));
 
 const RollSchema = new mongoose.Schema({
-  _id: { type: String, default: nanoid(10) },
   site_name: { type: String, required: true },
   title: { type: String, required: true },
   description: { type: String, required: true },

@@ -22,7 +22,7 @@ router.get("/", (req, res, next) => {
   });
 });
 
-router.get("/roll", (req, res, next) => {
+router.get("/roll", csrfProtection, (req, res, next) => {
   return res.render("newroll", {
     title: "Roller",
     embed: defaultEmbed,
@@ -30,9 +30,9 @@ router.get("/roll", (req, res, next) => {
   });
 });
 
-router.post("/newroll", (req, res, next) => {
+router.post("/newroll", csrfProtection, async (req, res, next) => {
   let roll = new Roll(req.body);
-  roll.save();
+  await roll.save();
   return res.redirect(`/disabled/${roll._id}`);
 });
 router.get("/disabled/:rollid", async (req, res, next) => {
