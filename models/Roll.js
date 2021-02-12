@@ -1,7 +1,15 @@
 const mongoose = require("mongoose");
-mongoose.plugin(require("mongoose-nanoid"));
+const shortid = require("shortid");
+
+shortid.characters(
+  "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ_-"
+);
 
 const RollSchema = new mongoose.Schema({
+  _id: {
+    type: String,
+    default: shortid.generate,
+  },
   site_name: { type: String, required: true },
   title: { type: String, required: true },
   description: { type: String, required: true },
